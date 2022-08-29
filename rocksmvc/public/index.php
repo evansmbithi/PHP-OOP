@@ -1,1 +1,3 @@
-Welcome to rocksmvc
+<?php
+require_once '../app/bootstrap.php';
+
