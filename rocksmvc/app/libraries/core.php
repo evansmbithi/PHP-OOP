@@ -22,12 +22,13 @@
      * define path as if we were in index.php
      * ucwords() - capitalizes the first letter 
      */
-
-    if(file_exists('../app/controllers/' . ucwords($url[0]) . '.php')){
-      $this->currentController = ucwords($url[0]);
-      unset($url[0]); //unset zero index
-    }else{
-      // load the default Controller 'Pages'
+    if(isset($url[0])){
+      if(file_exists('../app/controllers/' . ucwords($url[0]) . '.php')){
+        $this->currentController = ucwords($url[0]);
+        unset($url[0]); //unset zero index
+      }else{
+        // load the default Controller 'Pages'
+      }
     }
 
     // Require the controller
@@ -36,6 +37,22 @@
     // Instantiate controller class
     // $Pages = new Pages;
     $this->currentController = new $this->currentController;
+    // echo $this->currentMethod;
+
+    // check second part of URL
+    if(isset($url[1])){
+      // check if method exists in controller
+      if(method_exists($this->currentController, $url[1])){
+        $this->currentMethod = $url[1];
+      }
+      unset($url[1]);
+    }
+
+    // Get params
+    $this->params = $url ? array_values($url) : [];
+
+    // Call a callback with array of params
+    call_user_func_array([$this->currentController, $this->currentMethod], $this->params);
 
   }
 
