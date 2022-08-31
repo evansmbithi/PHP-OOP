@@ -16,7 +16,7 @@
     // print_r($this->getUrl());
     $url = $this->getUrl();
     /**
-     * look in controllers (posts/edit/1) for first value (posts)
+     * look in URL/controllers (posts/edit/1) for first value (posts)
      * if exists, set as current controller, else default to Pages controller
      * everything gets routed into index.php
      * define path as if we were in index.php

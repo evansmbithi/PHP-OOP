@@ -1,0 +1,25 @@
+CREATE TABLE users (
+  id INT NOT NULL AUTO_INCREMENT,
+  name VARCHAR(255),
+  email VARCHAR(255),
+  status VARCHAR(255),
+  PRIMARY KEY (id)
+);
+
+INSERT INTO users(
+  name, email, status
+) VALUES (
+  'Mbithi', 'mbithievans98@gmail.com', 'admin'
+);
+
+INSERT INTO users(
+  name, email, status
+) VALUES (
+  'Terry', 'terrykendinko@gmail.com', 'admin'
+);
+
+INSERT INTO users(
+  name, email, status
+) VALUES (
+  'Steve', 'simpleboy@gmail.com', 'guest'
+);

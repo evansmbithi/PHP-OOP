@@ -7,7 +7,10 @@ require_once 'config/config.php';
 // require_once 'libraries/core.php';
 // require_once 'libraries/database.php';
 
-// Autoload Core Libraries
+/**
+ * Autoload Core Libraries
+ * This is helpful incase the libraries become overwhelming
+ */
 spl_autoload_register(function($className){
   require_once 'libraries/' . $className . '.php';
 });

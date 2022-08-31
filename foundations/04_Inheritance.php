@@ -11,6 +11,7 @@ class User{
 
 class Customer extends User{
   private $balance;
+  private $amount;
 
   public function __construct($name, $age, $balance){
     // static method for accessing the parent constructor
@@ -19,10 +20,12 @@ class Customer extends User{
   }
 
   public function pay($amount){
-    return $this->name . ' paid $' . $amount;
+    $this->amount = $amount;
+    return $this->name . ' paid $' . $this->amount;
   }
 
   public function getBalance(){
+    $this->balance -= $this->amount;
     return $this->balance;
   }
 }
@@ -30,4 +33,4 @@ class Customer extends User{
 $customer = new Customer('Terry', 23, 500);
 echo $customer->pay(100);
 echo '<br>Balance is: ' . $customer->getBalance();
-echo $customer->balance; // Error: Cannot access private property
+// echo $customer->balance; // Error: Cannot access private property
